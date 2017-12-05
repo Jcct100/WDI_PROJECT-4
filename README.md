@@ -1,6 +1,6 @@
 # WDI Project 4: MERN Stack
 
-## Deployment
+### Deployment
 
 When deploying the app for the first time ensure you have run the following steps in order:
 
