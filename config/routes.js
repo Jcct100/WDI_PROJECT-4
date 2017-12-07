@@ -1,16 +1,16 @@
 const router = require('express').Router();
 // const auth  = require('../controllers/auth');
-const secureRoute = require('../lib/secureRoute');
+// const secureRoute = require('../lib/secureRoute');
 const petitions      = require('../controllers/petition');
 
 router.route('/petitions')
   .get(petitions.index)
-  .post(secureRoute, petitions.create);
+  .post(petitions.create);
 
 router.route('/petitions/:id')
   .get(petitions.show)
-  .put(secureRoute, petitions.update)
-  .delete(secureRoute, petitions.delete);
+  .put(petitions.update)
+  .delete(petitions.delete);
 
 // router.route('/register')
 //   .post(auth.register);

@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import ProtectedRoute from './components/utility/ProtectedRoute';
 
 import WelcomePage from './components/petitions/WelcomePage';
-import PetitionPage from './components/petitions/PetitionPage';
+import PetitionIndex from './components/petitions/PetitionIndex';
 import HomePage from './components/petitions/HomePage';
 import UserShow from './components/petitions/UserShow';
 import PetitionShow from './components/petitions/PetitionShow';
+import PetitionsEdit from './components/petitions/PetitionsEdit';
 
 
 import 'bootstrap-css-only';
@@ -23,8 +24,9 @@ class App extends React.Component {
           {/* <h1>E-petition</h1> */}
           <Switch>
             <Route exact path="/welcome" component={WelcomePage} />
+            <Route path="/petitions/:id/edit" component={PetitionsEdit} />
+            <Route exact path="/petitions" component={PetitionIndex} />
             <Route path="/petitions/:id" component={PetitionShow} />
-            <Route exact path="/petitions" component={PetitionPage} />
             <Route path="/UserShow" component={UserShow} />
             <Route exact path="/" component={HomePage} />
           </Switch>

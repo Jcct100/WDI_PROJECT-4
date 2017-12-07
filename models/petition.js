@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const petitionSchema = mongoose.Schema({
-  label: { type: String, required: true },
+  title: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },
   website: { type: String, required: true },
@@ -16,5 +16,3 @@ const petitionSchema = mongoose.Schema({
 module.exports = mongoose.model('petition', petitionSchema);
 
 //http://mongoosejs.com/docs/guide.html#timestamps
-
-//

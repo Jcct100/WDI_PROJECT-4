@@ -7,7 +7,7 @@ class UserShow extends React.Component {
     petitions: []
   }
 
-  componentDidMount() {
+  componentWillMount() {
     Axios
       .get('/api/petitions')
       .then(res => this.setState({ petitions: res.data }))
@@ -15,15 +15,28 @@ class UserShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+  deleteFood = () => {
+    console.log(this.props.match.params.id);
+    Axios
+      .delete(`/api/foods/${this.props.match.params.id}`)
+      .then(() => this.props.history.push('/'))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return(
       <div>
-        <h2>Number of Signatures:</h2>
-        <h2>Number of Petitions:</h2>
         { this.state.petitions.map(petition =>
           <div key={petition.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
-            <h2> { petition.label } </h2>
+            <p> { petition.title } </p>
+            <p>Number of Signatures: { petition.number_of_signatures }</p>
             <img src={petition.image} className="img-responsive" />
+            <Link to={`/petitions/${petition.id}/edit`} className="standard-button">
+              <i className="fa fa-pencil" aria-hidden="true"></i>Edit
+            </Link>
+            <button className="main-button" onClick={this.deleteFood}>
+              <i className="fa fa-trash" aria-hidden="true"></i>Delete
+            </button>
           </div>
         )}
       </div>

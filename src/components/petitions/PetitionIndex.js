@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
-class PetitionPage extends React.Component {
+class PetitionIndex extends React.Component {
   state = {
     petitions: []
   }
@@ -34,4 +34,4 @@ class PetitionPage extends React.Component {
 
 }
 
-export default PetitionPage;
+export default PetitionIndex;
