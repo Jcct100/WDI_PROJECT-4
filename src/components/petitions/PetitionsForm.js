@@ -22,6 +22,17 @@ const PetitionsForm = ({ handleSubmit, handleChange, petition }) => {
           />
         </div>
         <div className="form-group">
+          <title htmlFor="abstract">abstract: </title>
+          <input
+            type="text"
+            className="form-control"
+            id="abstract"
+            name="abstract"
+            value={petition.abstract}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
           <title htmlFor="description">Enter Description: </title>
           <input
             type="text"

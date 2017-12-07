@@ -11,7 +11,7 @@ class PetitionIndex extends React.Component {
     Axios
       .get('/api/petitions')
       .then(res => this.setState({ petitions: res.data }))
-      .then(res => console.log(res.data))
+      // .then(res => console.log(res.data))
       .catch(err => console.log(err));
   }
 
@@ -19,13 +19,18 @@ class PetitionIndex extends React.Component {
     return(
       <div>
         { this.state.petitions.map(petition =>
-          <Link key={petition.id} to={`/petitions/${petition.id}`}>
-            <div className="image-tile col-md-4 col-sm-6 col-xs-12">
-              <img src={petition.image} className="img-responsive" />
-              <h2> { petition.label } </h2>
-              <h2> number of signatures: { petition.number_of_signatures } </h2>
-            </div>
-          </Link>
+          <div key={petition.id} to={`/petitions/${petition.id}`}>
+            <Link to={`/petitions/${petition.id}`}>  <img src={petition.image} className="img-responsive" /> </Link>
+            <h2> { petition.title } </h2>
+            <p> { petition.abstract }</p>
+            <h2> number of signatures: { petition.number_of_signatures } </h2>
+            <Link to={`/petitions/${petition.id}`}>Read more</Link>
+            {/* <button className="main-button">
+              <Link to="/profile">
+                <i className="fa fa-plus" aria-hidden="true">User profile</i>Search
+              </Link>
+            </button> */}
+          </div>
         )}
       </div>
     );

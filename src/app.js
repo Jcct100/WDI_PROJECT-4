@@ -6,10 +6,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WelcomePage from './components/petitions/WelcomePage';
 import PetitionIndex from './components/petitions/PetitionIndex';
 import HomePage from './components/petitions/HomePage';
-import UserShow from './components/petitions/UserShow';
+import Profile from './components/auth/Profile';
 import PetitionShow from './components/petitions/PetitionShow';
 import PetitionsEdit from './components/petitions/PetitionsEdit';
-
+import UserNew from './components/petitions/UserNew';
+import WelcomeNew from './components/petitions/WelcomeNew';
 
 import 'bootstrap-css-only';
 import 'font-awesome/css/font-awesome.css';
@@ -21,14 +22,15 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          {/* <h1>E-petition</h1> */}
           <Switch>
             <Route exact path="/welcome" component={WelcomePage} />
             <Route path="/petitions/:id/edit" component={PetitionsEdit} />
             <Route exact path="/petitions" component={PetitionIndex} />
             <Route path="/petitions/:id" component={PetitionShow} />
-            <Route path="/UserShow" component={UserShow} />
+            <Route path="/profile" component={Profile} />
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/UserNew/new" component={UserNew} />
+            <Route path="/WelcomeNew/new" component={WelcomeNew} />
           </Switch>
         </div>
       </Router>

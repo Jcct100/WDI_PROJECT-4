@@ -15,11 +15,13 @@ class UserShow extends React.Component {
       .catch(err => console.log(err));
   }
 
-  deleteFood = () => {
-    console.log(this.props.match.params.id);
+  deletePetition = ({ id }) => {
     Axios
-      .delete(`/api/foods/${this.props.match.params.id}`)
-      .then(() => this.props.history.push('/'))
+      .delete(`/api/petitions/${id}`)
+      .then(() => {
+        const petitions = this.state.petitions.filter(petition => petition.id !== id);
+        this.setState({ petitions });
+      })
       .catch(err => console.log(err));
   }
 
@@ -30,15 +32,23 @@ class UserShow extends React.Component {
           <div key={petition.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
             <p> { petition.title } </p>
             <p>Number of Signatures: { petition.number_of_signatures }</p>
-            <img src={petition.image} className="img-responsive" />
+            <Link to={`/petitions/${petition.id}`} className="standard-button">
+              <img src={petition.image} className="img-responsive" />
+            </Link>
             <Link to={`/petitions/${petition.id}/edit`} className="standard-button">
               <i className="fa fa-pencil" aria-hidden="true"></i>Edit
             </Link>
-            <button className="main-button" onClick={this.deleteFood}>
+            <button className="main-button" onClick={() => this.deletePetition(petition)}>
               <i className="fa fa-trash" aria-hidden="true"></i>Delete
             </button>
           </div>
         )}
+        <button className="main-button">
+          {/* <Link to="/petitions"> */}
+          <Link to="/UserNew/new">
+            <i className="fa fa-plus" aria-hidden="true"></i>Create
+          </Link>
+        </button>
       </div>
     );
 
