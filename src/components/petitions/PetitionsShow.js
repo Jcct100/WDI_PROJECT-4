@@ -1,8 +1,9 @@
 import React    from 'react';
 import Axios    from 'axios';
 import { Link } from 'react-router-dom';
+import BackButton from '../utility/BackButton';
 
-class PetitionShow extends React.Component {
+class PetitionsShow extends React.Component {
   state = {
     petition: []
   }
@@ -15,7 +16,8 @@ class PetitionShow extends React.Component {
   }
 
   render() {
-    console.log(this.state.petition.title);
+    const petition = this.state.petition;
+    console.log(petition);
     return (
       <div className="row">
         <div className="image-tile col-md-6">
@@ -24,12 +26,12 @@ class PetitionShow extends React.Component {
         <div className="col-md-6">
           <h3>{this.state.petition.title}</h3>
           <h4>{this.state.petition.description}</h4>
-          <h4>{this.state.petition.website}</h4>
-          <h4>{this.state.petition.number_of_signatures}</h4>
+          <u> <a href={this.state.petition.website}>website </a> </u>
         </div>
+        <BackButton />
       </div>
     );
   }
 }
 
-export default PetitionShow;
+export default PetitionsShow;

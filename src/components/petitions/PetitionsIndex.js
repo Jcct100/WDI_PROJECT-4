@@ -1,8 +1,9 @@
 import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import BackButton from '../utility/BackButton';
 
-class PetitionIndex extends React.Component {
+class PetitionsIndex extends React.Component {
   state = {
     petitions: []
   }
@@ -18,6 +19,7 @@ class PetitionIndex extends React.Component {
   render() {
     return(
       <div>
+        <BackButton />
         { this.state.petitions.map(petition =>
           <div key={petition.id} to={`/petitions/${petition.id}`}>
             <Link to={`/petitions/${petition.id}`}>  <img src={petition.image} className="img-responsive" /> </Link>
@@ -39,4 +41,4 @@ class PetitionIndex extends React.Component {
 
 }
 
-export default PetitionIndex;
+export default PetitionsIndex;

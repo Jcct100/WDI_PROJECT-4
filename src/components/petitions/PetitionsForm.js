@@ -3,7 +3,7 @@ import React from 'react';
 // import BackButton from '../utility/BackButton';
 
 
-const PetitionsForm = ({ handleSubmit, handleChange, petition }) => {
+const PetitionsForm = ({ handleSubmit, handleChange, petition, history }) => {
   return (
 
     <div className="row">

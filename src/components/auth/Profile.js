@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import BackButton from '../utility/BackButton';
 
 class UserShow extends React.Component {
   state = {
@@ -28,6 +29,7 @@ class UserShow extends React.Component {
   render() {
     return(
       <div>
+        <BackButton />
         { this.state.petitions.map(petition =>
           <div key={petition.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
             <p> { petition.title } </p>
@@ -45,7 +47,7 @@ class UserShow extends React.Component {
         )}
         <button className="main-button">
           {/* <Link to="/petitions"> */}
-          <Link to="/UserNew/new">
+          <Link to="/usernew/new">
             <i className="fa fa-plus" aria-hidden="true"></i>Create
           </Link>
         </button>

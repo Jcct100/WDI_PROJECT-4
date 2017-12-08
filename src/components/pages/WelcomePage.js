@@ -10,7 +10,7 @@ class WelcomePage extends React.Component {
         <p>Tutorial:</p>
         <p>About us:</p>
         <button className="main-button">
-          <Link to="/WelcomeNew/new">
+          <Link to="/welcomenew/new">
             <i className="fa fa-plus" aria-hidden="true">Create your own petition:</i>Create
           </Link>
         </button>
