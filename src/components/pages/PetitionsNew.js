@@ -1,9 +1,9 @@
 import React from 'react';
 import Axios from 'axios';
-// import Auth from '../../lib/Auth';
+import Auth from '../../lib/Auth';
 import PetitionsForm from '../petitions/PetitionsForm';
 
-class WelcomeNew extends React.Component {
+class UserNew extends React.Component {
   state = {
     petition: {
       title: '',
@@ -20,13 +20,14 @@ handleChange = ({ target: { name, value } }) => {
 }
 
 handleSubmit = (e) => {
-  // console.log( this.state.petition);
   e.preventDefault();
 
   Axios
-    .post('/api/petitions', this.state.petition)
-    .then(() => this.props.history.push('/welcome'))
-    .then(alert('Petition created'))
+    .post('/api/petitions', this.state.petition, {
+      headers: {
+        'Authorization': `Bearer ${Auth.getToken()}`}
+    })
+    .then(() => this.props.history.push('/profile'))
     .catch(err => console.log(err));
 }
 
@@ -41,4 +42,4 @@ render() {
 }
 }
 
-export default WelcomeNew;
+export default UserNew;

@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import ProtectedRoute from './components/utility/ProtectedRoute';
+import ProtectedRoute from './components/utility/ProtectedRoute';
+
+import Login    from './components/auth/Login';
+import Register from './components/auth/Register';
 
 import WelcomePage from './components/pages/WelcomePage';
-import UserNew from './components/pages/UserNew';
-import WelcomeNew from './components/pages/WelcomeNew';
+import PetitionsNew from './components/pages/PetitionsNew';
 import PetitionsIndex from './components/petitions/PetitionsIndex';
 import HomePage from './components/petitions/HomePage';
 import Profile from './components/auth/Profile';
 import PetitionsShow from './components/petitions/PetitionsShow';
 import PetitionsEdit from './components/petitions/PetitionsEdit';
-
 
 import 'bootstrap-css-only';
 import 'font-awesome/css/font-awesome.css';
@@ -19,19 +20,22 @@ import './scss/style.scss';
 
 class App extends React.Component {
 
+
   render() {
     return (
       <Router>
         <div>
+          <HomePage />
           <Switch>
-            <Route exact path="/welcome" component={WelcomePage} />
-            <Route path="/petitions/:id/edit" component={PetitionsEdit} />
-            <Route exact path="/petitions" component={PetitionsIndex} />
-            <Route path="/petitions/:id" component={PetitionsShow} />
-            <Route path="/profile" component={Profile} />
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/usernew/new" component={UserNew} />
-            <Route path="/welcomenew/new" component={WelcomeNew} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <ProtectedRoute exact path="/welcome" component={WelcomePage} />
+            <ProtectedRoute path="/petitions/:id/edit" component={PetitionsEdit} />
+            <ProtectedRoute exact path="/petitions" component={PetitionsIndex} />
+            <ProtectedRoute path="/petitions/:id" component={PetitionsShow} />
+            <ProtectedRoute path="/profile/:id" component={Profile} />
+            <ProtectedRoute exact path="/" component={HomePage} />
+            <ProtectedRoute exact path="/petitionsnew/new" component={PetitionsNew} />
           </Switch>
         </div>
       </Router>

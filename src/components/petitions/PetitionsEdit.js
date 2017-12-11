@@ -3,7 +3,7 @@ import Axios from 'axios';
 
 
 import PetitionsForm from './PetitionsForm';
-// import Auth from '../../lib/Auth';
+import Auth from '../../lib/Auth';
 
 
 class PetitionsEdit extends React.Component {
@@ -34,9 +34,10 @@ handleSubmit = (e) => {
   e.preventDefault();
 
   Axios
-    .put(`/api/petitions/${this.props.match.params.id}`, this.state.petition)
-    // .then(res => this.props.history.push(`/petitions/${res.data.id}`))
-    .then(this.props.history.push('/UserShow'))
+    .put(`/api/petitions/${this.props.match.params.id}`, this.state.petition,
+      { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+      })
+    .then(this.props.history.push(`/petitions/${this.props.match.params.id}`))
     .catch(err => console.log(err));
 }
 

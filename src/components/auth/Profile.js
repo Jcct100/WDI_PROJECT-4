@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import BackButton from '../utility/BackButton';
+import Auth from '../../lib/Auth';
 
 class UserShow extends React.Component {
   state = {
@@ -18,7 +19,9 @@ class UserShow extends React.Component {
 
   deletePetition = ({ id }) => {
     Axios
-      .delete(`/api/petitions/${id}`)
+      .delete(`/api/petitions/${id}`, {
+        headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+      })
       .then(() => {
         const petitions = this.state.petitions.filter(petition => petition.id !== id);
         this.setState({ petitions });
@@ -37,19 +40,18 @@ class UserShow extends React.Component {
             <Link to={`/petitions/${petition.id}`} className="standard-button">
               <img src={petition.image} className="img-responsive" />
             </Link>
-            <Link to={`/petitions/${petition.id}/edit`} className="standard-button">
+            { Auth.isAuthenticated() && <Link to={`/petitions/${petition.id}/edit`} className="standard-button">
               <i className="fa fa-pencil" aria-hidden="true"></i>Edit
-            </Link>
-            <button className="main-button" onClick={() => this.deletePetition(petition)}>
+            </Link> }
+            { Auth.isAuthenticated() && <button className="main-button" onClick={() => this.deletePetition(petition)}>
               <i className="fa fa-trash" aria-hidden="true"></i>Delete
-            </button>
+            </button> }
           </div>
         )}
         <button className="main-button">
-          {/* <Link to="/petitions"> */}
-          <Link to="/usernew/new">
+          { Auth.isAuthenticated() && <Link to="/petitionsnew/new">
             <i className="fa fa-plus" aria-hidden="true"></i>Create
-          </Link>
+          </Link> }
         </button>
       </div>
     );

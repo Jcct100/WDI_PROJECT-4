@@ -30,6 +30,9 @@ styling 2:
 
 ### Challenges:
 
+
+-i didn’t ask for help and I have got to where I am now. I am now stuck on three problems. And they are holding me back before I could reach my MVP. They are as follow. 1)username-to be able to see only the post created by the user only when clicked on it and also to see the username next to the post they have created. 2)create -I want to create a post using a different username by got “JWT malfunction”3)swipe; -in want to create swipe. First read the tinder like swipeable. Understand how it works then apply. -i am going to have a go at these . write down what you tried and the current problem. If you can’t fixe it then you have to ask teacher to fix it tomorrow. 
+
 photo of my presentation:
 
 Predicted challenges:
