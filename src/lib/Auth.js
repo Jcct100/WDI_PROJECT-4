@@ -15,6 +15,11 @@ class Auth {
     return !!this.getToken();
   }
 
+  //!james returns
+  //an empty string is false
+  //is string with word is true.
+  //so !!james is true. 
+
   static logout() {
     localStorage.removeItem('token');
   }

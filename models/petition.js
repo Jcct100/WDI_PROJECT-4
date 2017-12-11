@@ -6,10 +6,9 @@ const petitionSchema = mongoose.Schema({
   abstract: { type: String, required: true },
   description: { type: String, required: true },
   website: { type: String, required: true },
-  number_of_signatures: Number,
-  signees: [{ type: mongoose.Schema.ObjectId, ref: 'User'  }],
-  rejections: [{ type: mongoose.Schema.ObjectId, ref: 'User'  }],
-  createdBy: [{ type: mongoose.Schema.ObjectId, ref: 'User'  }]
+  signees: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'  },
+  endDate: { type: Date, required: true }
 }, {
   timestamps: true
 });

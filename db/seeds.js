@@ -27,6 +27,7 @@ const petitionData = [{
 mongoose
   .connect(dbURI, { useMongoClient: true })
   .then(db => db.dropDatabase())
+//when remove dropdatabase you will not lose your data when node db/seeds? but you will get a duplicate  
   .then(() => Petition.create(petitionData))
   .then(petitions => console.log(`${petitions.length} petitions created!`))
   .catch(err => console.log(err))

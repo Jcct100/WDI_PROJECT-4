@@ -1,8 +1,9 @@
 const Petition = require('../models/petition');
 
+
 function petitionsIndex(req, res, next) {
   Petition
-    .find()
+    .find({ endDate: { $gt: Date.now } })
     .exec()
     .then(petitions => res.json(petitions))
     .catch(next);
@@ -58,10 +59,26 @@ function petitionsDelete(req, res, next) {
     .catch(next);
 }
 
+function petitionsSign(req, res, next) {
+  Petition
+    .findById(req.params.id)
+    .exec()
+    .then((petition) => {
+      if(!petition) return res.notFound();
+      petition.signees.push(req.currentUser);
+      return petition.save();
+    })
+    .then(petition => res.json(petition))
+    .catch(next);
+}
+
+
+
 module.exports = {
   index: petitionsIndex,
   create: petitionsCreate,
   show: petitionsShow,
   update: petitionsUpdate,
-  delete: petitionsDelete
+  delete: petitionsDelete,
+  sign: petitionsSign
 };
