@@ -18,7 +18,7 @@ class Auth {
   //!james returns
   //an empty string is false
   //is string with word is true.
-  //so !!james is true. 
+  //so !!james is true.
 
   static logout() {
     localStorage.removeItem('token');
@@ -30,5 +30,6 @@ class Auth {
     return JSON.parse(atob(token.split('.')[1]));
   }
 }
+//atob  is a to b
 
 export default Auth;

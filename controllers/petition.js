@@ -12,6 +12,7 @@ function petitionsIndex(req, res, next) {
 
 function petitionsCreate(req, res, next) {
   req.body.createdBy = req.currentUser.id;
+  //you need to use currentUser.id as it is from the file lib/secureRoute on line 17 
   Petition
     .create(req.body)
     .then(petition => res.status(201).json(petition))

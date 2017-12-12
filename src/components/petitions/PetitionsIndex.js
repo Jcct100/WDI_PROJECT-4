@@ -40,15 +40,19 @@ class PetitionsIndex extends React.Component {
   }
 
   render() {
+    console.log(this.state.petitions);
     return (
       <Cards onEnd={ this.end } className='master-root'>
         {this.state.petitions.map(petition =>
           <Card key={petition.id}
             onSwipeRight={() => this.right(petition)}
             onSwipeLeft={() => this.left}>
+            <Link to={`/profile/${petition.id}`}> <p> {petition.createdBy.username}</p> </Link>
             <h2>{ petition.title}</h2>
             <p> { petition.abstract }</p>
-            <Link to={`/petitions/${petition.id}`}>  <img src={petition.image} className="img-responsive" /> </Link>
+            {/* <Link to={`/petitions/${petition.id}`}>   */}
+            <img src={petition.image} className="img-responsive" />
+            {/* </Link> */}
             <h2> number of signatures: { petition.signees.length } </h2>
             <Link to={`/petitions/${petition.id}`}>Read more</Link>
             <BackButton />

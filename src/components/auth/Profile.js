@@ -49,7 +49,7 @@ class UserShow extends React.Component {
           </div>
         )}
         <button className="main-button">
-          { Auth.isAuthenticated() && <Link to="/petitionsnew/new">
+          { Auth.isAuthenticated() && <Link to="/petitions/new">
             <i className="fa fa-plus" aria-hidden="true"></i>Create
           </Link> }
         </button>
