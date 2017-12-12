@@ -30,6 +30,10 @@ class PetitionsIndex extends React.Component {
       .catch(err => console.log(err));
   }
 
+  left() {
+    console.log('left');
+  }
+
   end() {
     console.log('end');
     alert('there are no more petitions');
@@ -40,7 +44,8 @@ class PetitionsIndex extends React.Component {
       <Cards onEnd={ this.end } className='master-root'>
         {this.state.petitions.map(petition =>
           <Card key={petition.id}
-            onSwipeRight={() => this.right(petition)}>
+            onSwipeRight={() => this.right(petition)}
+            onSwipeLeft={() => this.left}>
             <h2>{ petition.title}</h2>
             <p> { petition.abstract }</p>
             <Link to={`/petitions/${petition.id}`}>  <img src={petition.image} className="img-responsive" /> </Link>

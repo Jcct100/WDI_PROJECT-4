@@ -12,7 +12,8 @@ class PetitionsEdit extends React.Component {
       title: '',
       description: '',
       website: '',
-      image: ''
+      image: '',
+      endDate: ''
     }
   }
 

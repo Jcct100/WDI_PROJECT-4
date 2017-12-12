@@ -71,6 +71,18 @@ const PetitionsForm = ({ handleSubmit, handleChange, petition, history }) => {
             onChange={handleChange}
           />
         </div>
+        <div className="form-group">
+          <title htmlFor="endDate">End Date: </title>
+          <input
+            type="date"
+            className="form-control"
+            id="endDate"
+            name="endDate"
+            placeholder="endDate"
+            value={petition.endDate}
+            onChange={handleChange}
+          />
+        </div>
         <div>
           <button className="save-button">Save</button>
         </div>

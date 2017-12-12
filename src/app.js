@@ -31,11 +31,11 @@ class App extends React.Component {
             <Route path="/register" component={Register} />
             <ProtectedRoute exact path="/welcome" component={WelcomePage} />
             <ProtectedRoute path="/petitions/:id/edit" component={PetitionsEdit} />
-            <ProtectedRoute exact path="/petitions" component={PetitionsIndex} />
+            <ProtectedRoute exact path="/petitions/new" component={PetitionsNew} />
             <ProtectedRoute path="/petitions/:id" component={PetitionsShow} />
+            <ProtectedRoute exact path="/petitions" component={PetitionsIndex} />
             <ProtectedRoute path="/profile/:id" component={Profile} />
             <ProtectedRoute exact path="/" component={HomePage} />
-            <ProtectedRoute exact path="/petitionsnew/new" component={PetitionsNew} />
           </Switch>
         </div>
       </Router>

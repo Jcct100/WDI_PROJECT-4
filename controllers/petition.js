@@ -3,16 +3,15 @@ const Petition = require('../models/petition');
 
 function petitionsIndex(req, res, next) {
   Petition
-    .find({ endDate: { $gt: Date.now } })
+    .find({ endDate: { $gt: new Date(Date.now()) } })
+    .populate('createdBy')
     .exec()
     .then(petitions => res.json(petitions))
     .catch(next);
 }
 
 function petitionsCreate(req, res, next) {
-
-  if(req.file) req.body.image = req.file.filename;
-
+  req.body.createdBy = req.currentUser.id;
   Petition
     .create(req.body)
     .then(petition => res.status(201).json(petition))

@@ -9,6 +9,7 @@ const petitionSchema = mongoose.Schema({
   signees: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'  },
   endDate: { type: Date, required: true }
+  // endDate: { type: Date }
 }, {
   timestamps: true
 });
@@ -16,5 +17,3 @@ const petitionSchema = mongoose.Schema({
 module.exports = mongoose.model('petition', petitionSchema);
 
 //http://mongoosejs.com/docs/guide.html#timestamps
-
-// abstract

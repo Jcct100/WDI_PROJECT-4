@@ -36,7 +36,7 @@ class UserShow extends React.Component {
         { this.state.petitions.map(petition =>
           <div key={petition.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
             <p> { petition.title } </p>
-            <p>Number of Signatures: { petition.number_of_signatures }</p>
+            <p>Number of Signatures: { petition.signees.length }</p>
             <Link to={`/petitions/${petition.id}`} className="standard-button">
               <img src={petition.image} className="img-responsive" />
             </Link>

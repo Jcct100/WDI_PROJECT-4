@@ -17,7 +17,7 @@ class PetitionsShow extends React.Component {
 
   render() {
     const petition = this.state.petition;
-    console.log(petition);
+    console.log('rendering....', petition);
     return (
       <div className="row">
         <div className="image-tile col-md-6">
@@ -26,6 +26,9 @@ class PetitionsShow extends React.Component {
         <div className="col-md-6">
           <h3>{this.state.petition.title}</h3>
           <h4>{this.state.petition.description}</h4>
+          { this.state.petition.createdBy && <p>
+            {this.state.petition.createdBy.username}
+          </p>}
           <u> <a href={this.state.petition.website}>website </a> </u>
         </div>
         <BackButton />

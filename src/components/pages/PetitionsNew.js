@@ -10,7 +10,8 @@ class UserNew extends React.Component {
       description: '',
       website: '',
       image: '',
-      abstract: ''
+      abstract: '',
+      endDate: ''
     }
   }
 
@@ -21,13 +22,12 @@ handleChange = ({ target: { name, value } }) => {
 
 handleSubmit = (e) => {
   e.preventDefault();
-
   Axios
     .post('/api/petitions', this.state.petition, {
       headers: {
         'Authorization': `Bearer ${Auth.getToken()}`}
     })
-    .then(() => this.props.history.push('/profile'))
+    .then(() => this.props.history.push(`/profile/${Auth.getPayload().userId}`))
     .catch(err => console.log(err));
 }
 

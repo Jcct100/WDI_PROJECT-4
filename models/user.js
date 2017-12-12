@@ -3,9 +3,12 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
+  firstName: String,
+  lastName: String,
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   telephone_number: { type: Number, required: false },
+  avatar: String,
   address: { type: String, required: true }
 });
 
@@ -16,8 +19,10 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
-    this.invalidate('passwordConfirmation', 'Passwords do not match');
+  if (this.isNew) {
+    if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+      this.invalidate('passwordConfirmation', 'Passwords do not match');
+    }
   }
   next();
 });

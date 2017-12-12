@@ -16,8 +16,11 @@ router.route('/petitions/:id')
   .put(secureRoute, petitions.update)
   .delete(secureRoute, petitions.delete);
 
-router.route('/peitions/:id/sign')
-  .post(secureRoute, petitions.sign);
+// router.route('/petitions/:id/sign')
+//   .post(secureRoute, petitions.sign);
+
+router.route('/petitions/:id/sign')
+  .post( petitions.sign);
 
 router.route('/register')
   .post(auth.register);

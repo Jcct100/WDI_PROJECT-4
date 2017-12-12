@@ -10,8 +10,9 @@ const petitionData = [{
   abstract: 'As a HGV driver, I struggled to understand completely the concept of a smart motorway',
   description: 'As a HGV driver, I struggled to understand completely the concept of a smart motorway. If there was no hard shoulder to stop on, what happens next? The answer, after pounding the smart tarmac, is ... it isn\'t smart enough. It isn\'t quick enough to put lane restrictions/closures in place. It is in fact....a death trap! Emergency services take longer to reach an incident due to no empty lane. It doesn\'t work!',
   website: 'https://petition.parliament.uk/petitions/206799',
-  // createdBy:
-  number_of_signatures: 0
+  // createdBy: users[0].id,
+  number_of_signatures: 0,
+  endDate: new Date(2017-12-29)
   // timestamps:
 }, {
   title: 'Call on PM to take action to build public trust in the Grenfell Tower Inquiry',
@@ -20,14 +21,15 @@ const petitionData = [{
   description: 'To secure trust in an establishment we feel has been distant & unresponsive, & to avoid a collapse of confidence in the Inquiry\'s ability to discover the truth, it is fundamental that; 1. The Inquiry is not led by a judge alone. Panel members must be appointed with relevant background, expertise, experience, & a real understanding of the issues facing those affected 2. Legal representatives of bereaved families see all evidence from the start & are allowed to question witnesses at the hearings',
   website: 'https://petition.parliament.uk/petitions/206722',
   // createdBy:
-  number_of_signatures: 0
+  number_of_signatures: 0,
+  endDate: new Date(2017-12-30)
   // timestamps:
 }];
 
 mongoose
   .connect(dbURI, { useMongoClient: true })
   .then(db => db.dropDatabase())
-//when remove dropdatabase you will not lose your data when node db/seeds? but you will get a duplicate  
+//when remove dropdatabase you will not lose your data when node db/seeds? but you will get a duplicate
   .then(() => Petition.create(petitionData))
   .then(petitions => console.log(`${petitions.length} petitions created!`))
   .catch(err => console.log(err))
