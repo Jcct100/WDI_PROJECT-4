@@ -5,6 +5,8 @@ import BackButton from '../utility/BackButton';
 import Auth       from '../../lib/Auth';
 import Slider     from 'react-slick';
 
+import moment from 'moment';
+
 class UserShow extends React.Component {
   state = {
     user: {}
@@ -19,9 +21,9 @@ class UserShow extends React.Component {
 
   canSee(createdBy) {
     const payload = Auth.getPayload();
-    console.log(payload);
+    // console.log(payload);
     if (!payload) return false;
-    //if payload and payload.userId is true return true as below. 
+    //if payload and payload.userId is true return true as below.
     if (payload && payload.userId) {
       return payload.userId === createdBy;
     }
@@ -39,13 +41,21 @@ class UserShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+  next() {
+    this.slider.slickNext();
+  }
+  previous() {
+    this.slider.slickPrev();
+  }
+
   render() {
     const settings = {
       dots: true,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      initialSlide: 0
     };
     return(
       <div>
@@ -62,37 +72,39 @@ class UserShow extends React.Component {
               <i className="fa fa-plus" aria-hidden="true"></i>
             </Link> }
           </button>
-          { this.state.user.petitions && this.state.user.petitions.map((petition) =>
-
-            <main key={petition.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
-              <h4>List of petitions here:</h4>
-              <Slider {...settings}>
-                <div><h3><Link to={`/petitions/${petition.id}`} className="standard-button">
-                  <img src={petition.image} className="img-responsive" />
-                </Link></h3>
-                <p>{ petition.title }</p>
-                <p>{ petition.abstract }</p>
-                </div>
-              </Slider>
-              <br />
-              <br />
-              <div>{petition.endDate}</div>
-
-              { this.canSee(petition.createdBy) &&
-                <div>
-                  <button className="main-button">
-                    <Link to={`/petitions/${petition.id}/edit`} className="standard-button">
-                      <i className="fa fa-pencil" aria-hidden="true"></i>
+          <main className="image-tile col-md-4 col-sm-6 col-xs-12">
+            <h4>List of petitions here:</h4>
+            <Slider ref={c => this.slider = c } {...settings}>
+              { this.state.user.petitions && this.state.user.petitions.map(petition =>
+                <div key={petition.id}>
+                  <h3>
+                    <Link to={`/petitions/${petition.id}`} className="standard-button">
+                      <img src={petition.image} className="img-responsive" />
                     </Link>
-                  </button>
-
-                  <button className="main-button" onClick={() => this.deletePetition(petition)}>
-                    <i className="fa fa-trash" aria-hidden="true"></i>
-                  </button>
+                  </h3>
+                  { this.canSee(petition.createdBy) &&
+                    <div>
+                      <button className="main-button">
+                        <Link to={`/petitions/${petition.id}/edit`} className="standard-button">
+                          <i className="fa fa-pencil" aria-hidden="true"></i>
+                        </Link>
+                      </button>
+                      <button className="main-button" onClick={() => this.deletePetition(petition)}>
+                        <i className="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  }
+                  <p>{ petition.title }</p>
+                  <p>{ petition.abstract }</p>
+                  <p>{moment(petition.endDate).format('MMMM Do YYYY')}</p>
                 </div>
-              }
-            </main>
-          )}
+              )}
+            </Slider>
+            <div style={{textAlign: 'center'}}>
+              <button className='button' onClick={this.previous}>Previous</button>
+              <button className='button' onClick={this.next}>Next</button>
+            </div>
+          </main>
         </div>
         }
 
