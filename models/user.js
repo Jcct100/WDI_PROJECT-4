@@ -5,12 +5,20 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   firstName: String,
   lastName: String,
-  email: { type: String, required: true, unique: true },
+  // email: { type: String, required: true, unique: true },
+  email: { type: String, required: true },
   password: { type: String, required: true },
   telephone_number: { type: Number, required: false },
   avatar: String,
   address: { type: String, required: true }
 });
+
+userSchema
+  .virtual('petitions', {
+    ref: 'Petition',
+    localField: '_id',
+    foreignField: 'createdBy'
+  });
 
 userSchema
   .virtual('passwordConfirmation')

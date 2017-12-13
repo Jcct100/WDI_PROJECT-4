@@ -47,12 +47,13 @@ class PetitionsIndex extends React.Component {
           <Card key={petition.id}
             onSwipeRight={() => this.right(petition)}
             onSwipeLeft={() => this.left}>
-            <Link to={`/profile/${petition.id}`}> <p> {petition.createdBy.username}</p> </Link>
+            <Link to={`/profile/${petition.createdBy.id}`}> <p> {petition.createdBy.username}</p> </Link>
             <h2>{ petition.title}</h2>
             <p> { petition.abstract }</p>
             {/* <Link to={`/petitions/${petition.id}`}>   */}
             <img src={petition.image} className="img-responsive" />
             {/* </Link> */}
+            <h3>no likey no swipey</h3>
             <h2> number of signatures: { petition.signees.length } </h2>
             <Link to={`/petitions/${petition.id}`}>Read more</Link>
             <BackButton />

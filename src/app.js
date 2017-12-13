@@ -17,6 +17,9 @@ import PetitionsEdit from './components/petitions/PetitionsEdit';
 import 'bootstrap-css-only';
 import 'font-awesome/css/font-awesome.css';
 import './scss/style.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 class App extends React.Component {
 

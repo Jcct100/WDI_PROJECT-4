@@ -38,11 +38,14 @@ handleSubmit = (e) => {
     .put(`/api/petitions/${this.props.match.params.id}`, this.state.petition,
       { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
       })
-    .then(this.props.history.push(`/petitions/${this.props.match.params.id}`))
+    .then(this.props.history.push(`/profile/${this.props.match.params.id}`))
+    // .then(this.props.history.replace(`/profile/${this.props.match.params.id}`))
     .catch(err => console.log(err));
 }
 
 render() {
+  const a = this.state.petition.title
+  console.log(a);
   return(
     <PetitionsForm
       petition={this.state.petition}

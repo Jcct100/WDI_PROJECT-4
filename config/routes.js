@@ -11,6 +11,9 @@ router.route('/petitions')
 router.route('/users')
   .get(users.index);
 
+router.route('/users/:id')
+  .get(users.show);
+
 router.route('/petitions/:id')
   .get(petitions.show)
   .put(secureRoute, petitions.update)

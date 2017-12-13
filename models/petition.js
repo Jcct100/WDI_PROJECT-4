@@ -14,6 +14,13 @@ const petitionSchema = mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('petition', petitionSchema);
+petitionSchema
+  .virtual('users', {
+    ref: 'User',
+    localField: '_id',
+    foreignField: 'createdBy'
+  });
+
+module.exports = mongoose.model('Petition', petitionSchema);
 
 //http://mongoosejs.com/docs/guide.html#timestamps
