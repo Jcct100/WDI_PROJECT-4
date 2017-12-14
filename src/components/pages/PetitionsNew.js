@@ -47,9 +47,8 @@ handleSubmit = (e) => {
   e.preventDefault();
   const userGoals = this.state.value.map(goal => goal.id);
   const petition = Object.assign({}, this.state.petition, { goals: userGoals });
-  console.log(petition);
   Axios
-    .post('/api/petitions', this.state.petition, {
+    .post('/api/petitions', petition, {
       headers: {
         'Authorization': `Bearer ${Auth.getToken()}`}
     })
