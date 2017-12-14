@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import BackButton from '../utility/BackButton';
 import Cards, { Card } from 'react-swipe-card';
 import Auth from '../../lib/Auth';
+import queryString from 'query-string';
 
 class PetitionsIndex extends React.Component {
   state = {
@@ -50,13 +51,26 @@ class PetitionsIndex extends React.Component {
     alert('there are no more petitions');
   }
 
+  runFilter() {
+    const goalIds = this.props.location.search ? queryString.parse(this.props.location.search).filter.split(',') : [];
+    if (!goalIds.length) return this.state.petitions;
+    console.log(goalIds);
+    const a = new Set(goalIds);
+    return this.state.petitions.filter(petition => {
+      const b = new Set(petition.goals.map(goal => goal.id));
+      const intersection = new Set([...a].filter(x => b.has(x)));
+      console.log(intersection.size);
+      return intersection.size;
+    });
+  }
+
   render() {
-    console.log(this.state.petitions);
+    const petitions = this.runFilter();
     return (
       <div>
         <h2 className='Petitionindex_title'>No likey no swipey</h2>
         <Cards onEnd={ this.end } className='master-root'>
-          {this.state.petitions.map(petition =>
+          {petitions.map(petition =>
             <Card key={petition.id}
               onSwipeRight={() => this.right(petition)}
               onSwipeLeft={() => this.left}>

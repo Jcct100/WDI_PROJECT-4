@@ -4,7 +4,7 @@ function petitionsIndex(req, res, next) {
   // console.log(req.currentUser);
   Petition
     .find({
-      signees: { $in: [req.currentUser._id]},
+      signees: { $ne: req.currentUser._id },
       endDate: { $gt: new Date(Date.now()) }
     })
     .populate('createdBy goals')

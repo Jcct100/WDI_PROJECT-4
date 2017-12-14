@@ -45,22 +45,22 @@ User
 
     return Goal.create([
       {name: 'No Poverty'},
-      {name: 'Zero Hunger '},
+      {name: 'Zero Hunger'},
       {name: 'Good Health and Well-being'},
-      {name: 'Quality Education '},
-      {name: 'Gender Equality '},
+      {name: 'Quality Education'},
+      {name: 'Gender Equality'},
       {name: 'Clean Water and Sanitation'},
-      {name: 'Affordable and Clean Energy '},
-      {name: 'Decent Work and Economic Growth '},
-      {name: 'Industry, Innovation and Infrastructure '},
-      {name: 'Reduced Inequality '},
-      {name: 'Sustainable Cities and Communities '},
-      {name: 'Responsible Consumption and Production '},
-      {name: 'Climate Action '},
-      {name: 'Life Below Water '},
-      {name: 'Life on Land '},
+      {name: 'Affordable and Clean Energy'},
+      {name: 'Decent Work and Economic Growth'},
+      {name: 'Industry, Innovation and Infrastructure'},
+      {name: 'Reduced Inequality'},
+      {name: 'Sustainable Cities and Communities'},
+      {name: 'Responsible Consumption and Production'},
+      {name: 'Climate Action'},
+      {name: 'Life Below Water'},
+      {name: 'Life on Land'},
       {name: 'Peace and Justice Strong Institutions'},
-      {name: 'Partnerships to achieve the Goal '}
+      {name: 'Partnerships to achieve the Goal'}
     ]);
   })
   .then(goals => {

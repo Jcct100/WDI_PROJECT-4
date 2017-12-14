@@ -48,7 +48,7 @@ runFilter() {
 }
 
 render() {
-  const petitions = this.runFilter();
+  const filters = this.state.value.map(val => val.value);
   return(
     <div>
       <h1>Hi, Welcome</h1>
@@ -71,7 +71,7 @@ render() {
         );
       }) } */}
 
-      <Link className="searchButton" to="/petitions">
+      <Link className="searchButton" to={`/petitions?filter=${filters}`}>
         <i className="fa fa-search-plus fa-2x" aria-hidden="true"></i>
       </Link>
       {''}
