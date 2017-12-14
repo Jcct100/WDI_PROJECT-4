@@ -6,6 +6,7 @@ const users        = require('../controllers/user');
 
 router.route('/petitions')
   .get(secureRoute, petitions.index)
+  //it runs the function in secureRoute first then petitions.index function
   .post(secureRoute, petitions.create);
 
 router.route('/users')

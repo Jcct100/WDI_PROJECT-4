@@ -37,7 +37,7 @@ function petitionsShow(req, res, next) {
 function petitionsUpdate(req, res, next) {
 
   // if(req.file) req.body.image = req.file.filename;
-  //if you uploaded a file go and get it. 
+  //if you uploaded a file go and get it.
 
   Petition
     .findById(req.params.id)

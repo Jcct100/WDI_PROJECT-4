@@ -14,6 +14,9 @@ class PetitionsIndex extends React.Component {
     Axios
       .get('/api/petitions', {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      //we only add the headers where because in the back end we check
+      //if there is a secure route before we run the index function
+      // which secure route checks if the user is authenticated 
       })
       .then(res => this.setState({ petitions: res.data }))
       .catch(err => console.log(err));
@@ -28,6 +31,11 @@ class PetitionsIndex extends React.Component {
     Axios
       .post(`/api/petitions/${petition.id}/sign`, petition, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
+        //this means send the petition as a message to the post request.
+        //you are passing the petition as body.
+        //the headers it is to get the Token from the user. ensure they are
+        //autheticated.
+        //this happens when you send a HTTP request.
       })
       .then(() => console.log('right'))
       .catch(err => console.log(err));
