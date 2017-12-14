@@ -14,12 +14,12 @@ const petitionSchema = mongoose.Schema({
   timestamps: true
 });
 
-petitionSchema
-  .virtual('users', {
-    ref: 'User',
-    localField: '_id',
-    foreignField: 'createdBy'
-  });
+// petitionSchema
+//   .virtual('users', {
+//     ref: 'User',
+//     localField: '_id',
+//     foreignField: 'createdBy'
+//   });
 
 module.exports = mongoose.model('Petition', petitionSchema);
 

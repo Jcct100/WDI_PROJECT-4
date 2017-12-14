@@ -12,11 +12,18 @@ const HomePage = ({ history }) => {
 
   return(
     <div>
-      <div>Logo</div>
+      { !Auth.isAuthenticated() && <h1>PetTinder</h1> }
+      { !Auth.isAuthenticated() && <h2>Tinder for Petitions</h2> }
       <nav>
-        { !Auth.isAuthenticated() && <Link to="/login" className="standard-button">Login</Link> }
-        {' '}
-        { !Auth.isAuthenticated() && <Link to="/register" className="standard-button">Register</Link> }
+        <button className="Menu-bottom">
+          { !Auth.isAuthenticated() &&
+          <Link to="/login" className="standard-button">Login</Link> }
+          {/* </button> */}
+          {' '}
+          {/* <button className="Register"> */}
+          { !Auth.isAuthenticated() &&
+          <Link to="/register" className="standard-button">Register</Link> }
+        </button>
         {' '}
         { Auth.isAuthenticated() && <a href="#" className="standard-button" onClick = {logout} >logout </a> }
       </nav>

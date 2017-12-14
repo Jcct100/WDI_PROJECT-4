@@ -7,9 +7,18 @@ class WelcomePage extends React.Component {
   render() {
     return(
       <div>
-        <h1>PetTinder</h1>
-        <h2>Tinder for Petitions</h2>
-        <p>Tutorial:
+        <h1>Hi, Welcome</h1>
+        <h2>Are you ready to change the world?</h2>
+        <p>YES..Please choose actions:</p>
+        { Auth.isAuthenticated() && <Link to="/petitions/new" >
+          Create: {''} <i className="fa fa-plus fa-2x" aria-hidden="true"></i>
+        </Link> }
+        {''}
+        <Link to="/petitions">
+          Search: {''} <i className="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+        </Link>
+        {''}
+        <p> Not yet? ...Learn more:
           {/* <iframe
             width="560"
             height="315"
@@ -20,16 +29,6 @@ class WelcomePage extends React.Component {
             allowfullscreen>
           </iframe> */}
         </p>
-        <button className="main-button">
-          { Auth.isAuthenticated() && <Link to="/petitions/new">
-            <i className="fa fa-plus" aria-hidden="true">Create your own petition:</i>Create
-          </Link> }
-        </button>
-        <button className="main-button">
-          <Link to="/petitions">
-            <i className="fa fa-plus" aria-hidden="true">Search for petitions now:</i>Search
-          </Link>
-        </button>
       </div>
     );
   }

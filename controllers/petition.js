@@ -1,9 +1,12 @@
 const Petition = require('../models/petition');
 
-
 function petitionsIndex(req, res, next) {
+  // console.log(req.currentUser);
   Petition
-    .find({ endDate: { $gt: new Date(Date.now()) } })
+    .find({
+      signees: { $nin: [req.currentUser._id]},
+      endDate: { $gt: new Date(Date.now()) }
+    })
     .populate('createdBy')
     .exec()
     .then(petitions => res.json(petitions))
@@ -12,7 +15,7 @@ function petitionsIndex(req, res, next) {
 
 function petitionsCreate(req, res, next) {
   req.body.createdBy = req.currentUser.id;
-  //you need to use currentUser.id as it is from the file lib/secureRoute on line 17 
+  //you need to use currentUser.id as it is from the file lib/secureRoute on line 17
   Petition
     .create(req.body)
     .then(petition => res.status(201).json(petition))
@@ -33,7 +36,8 @@ function petitionsShow(req, res, next) {
 
 function petitionsUpdate(req, res, next) {
 
-  if(req.file) req.body.image = req.file.filename;
+  // if(req.file) req.body.image = req.file.filename;
+  //if you uploaded a file go and get it. 
 
   Petition
     .findById(req.params.id)

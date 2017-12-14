@@ -84,7 +84,7 @@ const PetitionsForm = ({ handleSubmit, handleChange, petition, history }) => {
           />
         </div>
         <div>
-          <button className="save-button">Save</button>
+          <button className="save-button"><i className="fa fa-floppy-o" aria-hidden="true"></i></button>
         </div>
       </form>
     </div>

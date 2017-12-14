@@ -41,12 +41,12 @@ class UserShow extends React.Component {
       .catch(err => console.log(err));
   }
 
-  next() {
-    this.slider.slickNext();
-  }
-  previous() {
-    this.slider.slickPrev();
-  }
+  // next() {
+  //   this.slider.slickNext();
+  // }
+  // previous() {
+  //   this.slider.slickPrev();
+  // }
 
   render() {
     const settings = {
@@ -55,7 +55,9 @@ class UserShow extends React.Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      initialSlide: 0
+      initialSlide: 0,
+      autoplay: true,
+      autoplaySpeed: 2000
     };
     return(
       <div>
@@ -100,10 +102,6 @@ class UserShow extends React.Component {
                 </div>
               )}
             </Slider>
-            <div style={{textAlign: 'center'}}>
-              <button className='button' onClick={this.previous}>Previous</button>
-              <button className='button' onClick={this.next}>Next</button>
-            </div>
           </main>
         </div>
         }

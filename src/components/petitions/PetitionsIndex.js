@@ -12,7 +12,9 @@ class PetitionsIndex extends React.Component {
 
   componentDidMount() {
     Axios
-      .get('/api/petitions')
+      .get('/api/petitions', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       .then(res => this.setState({ petitions: res.data }))
       .catch(err => console.log(err));
 
@@ -25,8 +27,9 @@ class PetitionsIndex extends React.Component {
   right(petition) {
     Axios
       .post(`/api/petitions/${petition.id}/sign`, petition, {
-        header: { Authorization: `Bearer ${Auth.getToken()}` }
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
+      .then(() => console.log('right'))
       .catch(err => console.log(err));
   }
 
@@ -42,24 +45,29 @@ class PetitionsIndex extends React.Component {
   render() {
     console.log(this.state.petitions);
     return (
-      <Cards onEnd={ this.end } className='master-root'>
-        {this.state.petitions.map(petition =>
-          <Card key={petition.id}
-            onSwipeRight={() => this.right(petition)}
-            onSwipeLeft={() => this.left}>
-            <Link to={`/profile/${petition.createdBy.id}`}> <p> {petition.createdBy.username}</p> </Link>
-            <h2>{ petition.title}</h2>
-            <p> { petition.abstract }</p>
-            {/* <Link to={`/petitions/${petition.id}`}>   */}
-            <img src={petition.image} className="img-responsive" />
-            {/* </Link> */}
-            <h3>no likey no swipey</h3>
-            <h2> number of signatures: { petition.signees.length } </h2>
-            <Link to={`/petitions/${petition.id}`}>Read more</Link>
-            <BackButton />
-          </Card>
-        )}
-      </Cards>
+      <div>
+        <h2 className='Petitionindex_title'>No likey no swipey</h2>
+        <Cards onEnd={ this.end } className='master-root'>
+          {this.state.petitions.map(petition =>
+            <Card key={petition.id}
+              onSwipeRight={() => this.right(petition)}
+              onSwipeLeft={() => this.left}>
+              <p><Link to={`/profile/${petition.createdBy.id}`}>{petition.createdBy.username}</Link>{'\'s'} petition</p>
+              <h2>{ petition.title}</h2>
+              <p> { petition.abstract }</p>
+              {/* <Link to={`/petitions/${petition.id}`}>   */}
+              <div className="card-image" style={{backgroundImage: 'url(' + `${petition.image}` + ')'}}></div>
+              {/* <img src={petition.image} className="img-responsive" /> */}
+              {/* </Link> */}
+              <h2> Number of signatures: { petition.signees.length } </h2>
+              <p><Link to={`/petitions/${petition.id}`}>Read more</Link></p>
+              <BackButton />
+            </Card>
+          )}
+        </Cards>
+        <h2 >Swipe <strong>right</strong> to sign & left to skip</h2>
+        {/* <i className="fa fa-arrow-circle-o-right">Sign</i> */}
+      </div>
     );
   }
 }

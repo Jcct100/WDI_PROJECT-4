@@ -23,7 +23,6 @@ import 'slick-carousel/slick/slick-theme.css';
 
 class App extends React.Component {
 
-
   render() {
     return (
       <Router>
@@ -38,7 +37,7 @@ class App extends React.Component {
             <ProtectedRoute path="/petitions/:id" component={PetitionsShow} />
             <ProtectedRoute exact path="/petitions" component={PetitionsIndex} />
             <ProtectedRoute path="/profile/:id" component={Profile} />
-            <ProtectedRoute exact path="/" component={HomePage} />
+            <ProtectedRoute exact path="home" component={HomePage} />
           </Switch>
         </div>
       </Router>

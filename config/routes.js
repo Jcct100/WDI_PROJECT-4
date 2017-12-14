@@ -5,7 +5,7 @@ const petitions    = require('../controllers/petition');
 const users        = require('../controllers/user');
 
 router.route('/petitions')
-  .get(petitions.index)
+  .get(secureRoute, petitions.index)
   .post(secureRoute, petitions.create);
 
 router.route('/users')

@@ -11,14 +11,21 @@ const userSchema = new mongoose.Schema({
   telephone_number: { type: Number, required: false },
   avatar: String,
   address: { type: String, required: true }
+  // petitions: createdBy
 });
 
 userSchema
   .virtual('petitions', {
+    //add the name petitions.
     ref: 'Petition',
+    //the schema we are referring to. 
     localField: '_id',
+    //in this schema.
     foreignField: 'createdBy'
+    //in other schema
   });
+  //it is saying get createdby from the other schema and name it petitions.
+  //so you can get all the petitions in createdBy that particular user.
 
 userSchema
   .virtual('passwordConfirmation')
