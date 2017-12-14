@@ -8,7 +8,8 @@ const petitionSchema = mongoose.Schema({
   website: { type: String, required: true },
   signees: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'  },
-  endDate: { type: Date, required: true }
+  endDate: { type: Date, required: true },
+  goals: [{type: mongoose.Schema.ObjectId, ref: 'Goal' }]
   // endDate: { type: Date }
 }, {
   timestamps: true

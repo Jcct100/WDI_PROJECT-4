@@ -4,10 +4,10 @@ function petitionsIndex(req, res, next) {
   // console.log(req.currentUser);
   Petition
     .find({
-      signees: { $nin: [req.currentUser._id]},
+      signees: { $in: [req.currentUser._id]},
       endDate: { $gt: new Date(Date.now()) }
     })
-    .populate('createdBy')
+    .populate('createdBy goals')
     .exec()
     .then(petitions => res.json(petitions))
     .catch(next);
@@ -25,7 +25,7 @@ function petitionsCreate(req, res, next) {
 function petitionsShow(req, res, next) {
   Petition
     .findById(req.params.id)
-    .populate('createdBy')
+    .populate('createdBy goals')
     .exec()
     .then((petition) => {
       if(!petition) return res.notFound();

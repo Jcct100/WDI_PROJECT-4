@@ -5,20 +5,18 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   firstName: String,
   lastName: String,
-  // email: { type: String, required: true, unique: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  telephone_number: { type: Number, required: false },
+  telephone_number: { type: String, required: false },
   avatar: String,
   address: { type: String, required: true }
-  // petitions: createdBy
 });
 
 userSchema
   .virtual('petitions', {
     //add the name petitions.
     ref: 'Petition',
-    //the schema we are referring to. 
+    //the schema we are referring to.
     localField: '_id',
     //in this schema.
     foreignField: 'createdBy'

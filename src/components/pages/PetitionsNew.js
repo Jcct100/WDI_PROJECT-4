@@ -11,8 +11,31 @@ class UserNew extends React.Component {
       website: '',
       image: '',
       abstract: '',
-      endDate: ''
-    }
+      endDate: '',
+      goals: []
+    },
+    removeSelected: true,
+    goals: [],
+    value: [],
+    errors: {}
+  }
+
+
+  componentDidMount() {
+    Axios
+      .get('/api/goals')
+      .then(res => {
+        const goals = res.data.map(goal => {
+          return { label: goal.name, value: goal.name, id: goal.id };
+        });
+        this.setState({goals});
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleSelectChange = (value) => {
+    console.log(value);
+    this.setState({ value });
   }
 
 handleChange = ({ target: { name, value } }) => {
@@ -22,6 +45,9 @@ handleChange = ({ target: { name, value } }) => {
 
 handleSubmit = (e) => {
   e.preventDefault();
+  const userGoals = this.state.value.map(goal => goal.id);
+  const petition = Object.assign({}, this.state.petition, { goals: userGoals });
+  console.log(petition);
   Axios
     .post('/api/petitions', this.state.petition, {
       headers: {
@@ -37,6 +63,8 @@ render() {
       handleSubmit={ this.handleSubmit }
       handleChange={ this.handleChange }
       petition= { this.state.petition }
+      handleSelectChange={this.handleSelectChange}
+      {...this.state}
     />
   );
 }

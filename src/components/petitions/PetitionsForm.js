@@ -1,9 +1,10 @@
 import React from 'react';
 
 import BackButton from '../utility/BackButton';
+import MultiSelect from '../utility/MultiSelect';
 
 
-const PetitionsForm = ({ handleSubmit, handleChange, petition, history }) => {
+const PetitionsForm = ({ handleSubmit, handleChange, petition, history, goals, handleSelectChange, removeSelected, value }) => {
   return (
 
     <div className="row">
@@ -83,6 +84,13 @@ const PetitionsForm = ({ handleSubmit, handleChange, petition, history }) => {
             onChange={handleChange}
           />
         </div>
+        11:15]
+        <MultiSelect
+          handleSelectChange={handleSelectChange}
+          removeSelected={removeSelected}
+          options={goals}
+          value={value}
+        />
         <div>
           <button className="save-button"><i className="fa fa-floppy-o" aria-hidden="true"></i></button>
         </div>

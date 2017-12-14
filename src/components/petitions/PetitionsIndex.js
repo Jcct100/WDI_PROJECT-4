@@ -16,7 +16,7 @@ class PetitionsIndex extends React.Component {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       //we only add the headers where because in the back end we check
       //if there is a secure route before we run the index function
-      // which secure route checks if the user is authenticated 
+      // which secure route checks if the user is authenticated
       })
       .then(res => this.setState({ petitions: res.data }))
       .catch(err => console.log(err));

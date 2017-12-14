@@ -9,7 +9,6 @@ const HomePage = ({ history }) => {
     history.push('/');
   }
 
-
   return(
     <div>
       { !Auth.isAuthenticated() && <h1>PetTinder</h1> }
@@ -18,9 +17,7 @@ const HomePage = ({ history }) => {
         <button className="Menu-bottom">
           { !Auth.isAuthenticated() &&
           <Link to="/login" className="standard-button">Login</Link> }
-          {/* </button> */}
-          {' '}
-          {/* <button className="Register"> */}
+
           { !Auth.isAuthenticated() &&
           <Link to="/register" className="standard-button">Register</Link> }
         </button>

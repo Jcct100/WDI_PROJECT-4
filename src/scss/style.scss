@@ -8,8 +8,35 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #fff;
   color: #333;
-  max-width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   background-color: #52ACFF;
+}
+
+.welcome-input{
+  margin: 0 auto;
+  width: 90%;
+  border: 1px black solid;
+  background-color: #52ACFF;
+}
+
+.createButton, .searchButton {
+  display: block;
+  max-width: 320px;
+  clear: both;
+  font-size: 20px;
+  margin: 20px auto;
+  background: black;
+  color: white;
+  padding: 10px;
+}
+
+input{
+  background-color: #52ACFF;
+}
+
+Select{
+  width: 150px;
 }
 
 header {
@@ -94,9 +121,7 @@ button {
 }
 
 .standard-button {
-  background: #FF5425;
-  border: 1px solid lighten(#ccc, 10%);
-
+  font-size: 30px;
   &:hover {
     background: darken(#ccc, 10%);
   }
@@ -298,3 +323,10 @@ h1, h2 {
   font-family: 'Dancing Script', cursive;
   font-size: 40px;
 }
+
+// .styled-select.slate {
+//    border: 1px solid #ccc;
+//    font-size: 16px;
+//    height: 34px;
+//    width: 268px;
+// }
