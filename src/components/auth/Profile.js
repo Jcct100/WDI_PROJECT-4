@@ -56,7 +56,7 @@ class UserShow extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       initialSlide: 0,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 2000
     };
     return(

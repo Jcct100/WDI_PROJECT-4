@@ -30,7 +30,7 @@ router.route('/petitions/:id')
 //   .post(secureRoute, petitions.sign);
 
 router.route('/petitions/:id/sign')
-  .post( petitions.sign);
+  .post(secureRoute, petitions.sign);
 
 router.route('/register')
   .post(auth.register);

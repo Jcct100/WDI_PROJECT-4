@@ -33,7 +33,7 @@ class WelcomePage extends React.Component {
   }
 
 handleSelectChange = (value) => {
-  console.log(value);
+  // console.log(value);
   this.setState({ value });
 }
 

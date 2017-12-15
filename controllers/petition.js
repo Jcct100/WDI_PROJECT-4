@@ -2,6 +2,7 @@ const Petition = require('../models/petition');
 
 function petitionsIndex(req, res, next) {
   // console.log(req.currentUser);
+  //you need to refresh your page inorder to see the console.log in terminal
   Petition
     .find({
       signees: { $ne: req.currentUser._id },
@@ -64,6 +65,7 @@ function petitionsDelete(req, res, next) {
 }
 
 function petitionsSign(req, res, next) {
+  console.log(req.currentUser);
   Petition
     .findById(req.params.id)
     .exec()
