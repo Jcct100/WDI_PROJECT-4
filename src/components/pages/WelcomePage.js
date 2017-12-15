@@ -53,7 +53,7 @@ render() {
     <div>
       <h1>Hi, Welcome</h1>
       <h2>Are you ready to change the world?</h2>
-      <p>YES..Please choose actions:</p>
+      {/* <p>YES..Please choose actions:</p> */}
 
       <MultiSelect
         value={this.state.value}
@@ -79,8 +79,8 @@ render() {
         <i className="fa fa-plus fa-2x" aria-hidden="true"></i>
       </Link> }
       {''}
-      <p> Not yet? ...Learn more:
-      </p>
+      {/* <p> Not yet? ...Learn more: */}
+      {/* </p> */}
     </div>
   );
 }

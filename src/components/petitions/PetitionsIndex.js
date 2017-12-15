@@ -48,7 +48,7 @@ class PetitionsIndex extends React.Component {
 
   end() {
     console.log('end');
-    alert('there are no more petitions');
+    // alert('there are no more petitions');
   }
 
   runFilter() {

@@ -84,7 +84,6 @@ const PetitionsForm = ({ handleSubmit, handleChange, petition, history, goals, h
             onChange={handleChange}
           />
         </div>
-        11:15]
         <MultiSelect
           handleSelectChange={handleSelectChange}
           removeSelected={removeSelected}
