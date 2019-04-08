@@ -38,7 +38,7 @@ The following logic was implemented for my app:
 
 Here is the 17 Sustainable Development Goals.  
 
-1)you can filter the search by selecting the goals you care the most. 
+1) you can filter the search by selecting the goals you care the most. 
 
 2) As a result you will only see the petitions related to the goals you have chosen. 
 
